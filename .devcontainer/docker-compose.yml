@@ -1,0 +1,60 @@
+--- #-------------------------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
+version: "3"
+services:
+  mysql:
+    image: mariadb
+    volumes:
+      - ../.wordpress/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: user_name
+      MYSQL_PASSWORD: user_pass
+    restart: always
+
+  wordpress:
+    # Uncomment the next line to use a non-root user for all processes. You can also
+    # simply use the "remoteUser" property in devcontainer.json if you just want VS Code
+    # and its sub-processes (terminals, tasks, debugging) to execute as the user. On Linux,
+    # you may need to update USER_UID and USER_GID in .devcontainer/Dockerfile to match your
+    # user if not 1000. See https://aka.ms/vscode-remote/containers/non-root for details.
+    # user: vscode
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../.wordpress/html:/var/www/html
+      # This is where VS Code should expect to find your project's source code
+      # and the value of "workspaceFolder" in .devcontainer/devcontainer.json
+      - ..:/workspace:cached
+
+      # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-in-docker-compose for details.
+      # - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - mysql
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      WORDPRESS_DB_NAME: db_name
+      WORDPRESS_DB_USER: user_name
+      WORDPRESS_DB_PASSWORD: user_pass
+      WORDPRESS_TABLE_PREFIX: wp_
+    links:
+      - mysql
+    restart: always
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d:ro
+      - ../.wordpress/html:/var/www/html
+    ports:
+      - 8080:80
+    links:
+      - wordpress
+    restart: always
