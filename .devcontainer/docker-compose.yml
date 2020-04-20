@@ -5,16 +5,6 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 version: "3"
 services:
-  mysql:
-    image: mariadb
-    volumes:
-      - ../.wordpress/mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: mysql_root_pass
-      MYSQL_DATABASE: db_name
-      MYSQL_USER: user_name
-      MYSQL_PASSWORD: user_pass
-    restart: always
 
   wordpress:
     # Uncomment the next line to use a non-root user for all processes. You can also
@@ -28,6 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
+      - ./config/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
       - ../.wordpress/html:/var/www/html
       # This is where VS Code should expect to find your project's source code
       # and the value of "workspaceFolder" in .devcontainer/devcontainer.json
@@ -48,10 +39,21 @@ services:
       - mysql
     restart: always
 
+  mysql:
+    image: mariadb
+    volumes:
+      - ../.wordpress/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: user_name
+      MYSQL_PASSWORD: user_pass
+    restart: always
+
   nginx:
     image: nginx
     volumes:
-      - ./nginx:/etc/nginx/conf.d:ro
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ../.wordpress/html:/var/www/html
     ports:
       - 8080:80
