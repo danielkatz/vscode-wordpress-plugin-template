@@ -1,4 +1,4 @@
-# vscode-wordpress-plugin-template
+# WordPress Plugin template for VS Code
 
 ## Summary
 
