@@ -8,14 +8,15 @@
 
 Included software:
 
-|Software|Version|Description|
-|--------|-------|-----------|
-|NGINX|latest||
-|MariaDB|latest||
-|PHP-FPM|latest||
-|PHP|7.4.x||
-|WordPress|5.4.x||
-||||
+|Software|Version|
+|--------|-------|
+|PHP-FPM|7.4.x|
+|WordPress|5.4.x|
+|Composer|[latest](https://getcomposer.org/)|
+|PHP_CodeSniffer|[latest](https://packagist.org/packages/squizlabs/php_codesniffer)|
+|WordPress-Coding-Standards|[master](https://github.com/WordPress/WordPress-Coding-Standards)|
+|NGINX|[latest](https://hub.docker.com/_/nginx)|
+|MariaDB|[latest](https://hub.docker.com/_/mariadb)|
 
 Preinstalled VSCode extensions:
 
@@ -25,44 +26,33 @@ Preinstalled VSCode extensions:
 |PHP Sniffer & Beautifier|Linter that integrates `phpcs` & `phpcbf` into VSCode|
 |SQLTools - Database tools|Connection explorer, query runner, intellisense, bookmarks, query history|
 
-## Using this definition with an existing folder
+## How it works
 
-**[Optional] Include any special setup requirements here.**
+* devcontainer
+* The `.wordpress` folder
+* Symlinks
+* xdebug
 
-Just follow these steps:
+## Configuration
 
-1. If this is your first time using a development container, please follow the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started) to set up your machine.
+**Though this template will work out-of-the-box, to make the most out of it, you can easily config any aspect of it to suit your needs.**
 
-2. To use VS Code's copy of this definition:
-   1. Start VS Code and open your project folder.
-   2. Press <kbd>F1</kbd> select and **Remote-Containers: Add Development Container Configuration Files...** from the command palette.
-   3. Select the Dart definition.
+### Plugin or Template location
 
-3. To use latest-and-greatest copy of this definition from the repository:
-   1. Clone this repository.
-   2. Copy the contents of this folder in the cloned repository to the root of your project folder.
-   3. Start VS Code and open your project folder.
+TBD
 
-4. After following step 2 or 3, the contents of the `.devcontainer` folder in your project can be adapted to meet your needs.
+### Selecting PHP and WordPress versions
 
-5. Finally, press <kbd>F1</kbd> and run **Remote-Containers: Reopen Folder in Container** to start using the definition.
+TBD
 
-## [Optional] Testing the definition
+### Configuring NGINX
 
-This definition includes some test code that will help you verify it is working as expected on your system. Follow these steps:
+TBD
 
-1. If this is your first time using a development container, please follow the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started) to set up your machine.
-2. Clone this repository.
-3. Start VS Code, press <kbd>F1</kbd>, and select **Remote-Containers: Open Folder in Container...**
-4. Select this folder from the cloned repository.
-5. **[Provide any information on steps required to test the definition.]**
+### Configuring PHP
 
-## [Optional] How it works
+TBD
 
-**[If the definition provides a pattern you think will be useful for others, describe the it here.]**
+### Coding Styles
 
-## License
-
-Copyright (c) Microsoft Corporation. All rights reserved.
-
-Licensed under the MIT License. See [LICENSE](https://github.com/Microsoft/vscode-dev-containers/blob/master/LICENSE).
+TBD
