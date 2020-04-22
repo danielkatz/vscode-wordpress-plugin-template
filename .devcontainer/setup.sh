@@ -1,7 +1,7 @@
 #!/bin/bash
 
 workspace='/workspace'
-symlink_target='/var/www/html/wp-content/plugins/test-plugin'
+symlink_target='/var/www/html/wp-content/plugins/dev-plugin'
 
 # To avoid interfering with WordPress initialization, wait for it to finish
 until pids=$(pidof php-fpm)
