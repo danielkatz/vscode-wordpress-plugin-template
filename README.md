@@ -49,7 +49,7 @@ The development environment is pre-configured for debugging with xdebug. You can
 
 ### Plugin or Template location
 
-By default, the root folder of your project will be mapped via a symlink into `wp-content/plugins/dev-plugin` inside the WordPress folder, but you can change that by editing `symlink_target` variable in `.devcontainer/setup.sh` file.
+By default, the root folder of your project will be mapped via a symlink into `wp-content/plugins/dev-plugin` inside the WordPress folder, but you can change that by editing `symlink_target` variable in `.devcontainer/setup-symlink.sh` file.
 
 ### Selecting PHP and WordPress versions
 

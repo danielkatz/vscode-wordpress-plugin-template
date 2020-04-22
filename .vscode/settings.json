@@ -1,4 +1,6 @@
 {
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
     "phpsab.executablePathCS": "/root/.composer/vendor/bin/phpcs",
     "phpsab.executablePathCBF": "/root/.composer/vendor/bin/phpcbf",
     "phpsab.snifferMode": "onType",
