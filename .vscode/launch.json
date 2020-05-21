@@ -9,7 +9,7 @@
             "type": "php",
             "request": "launch",
             "pathMappings": {
-                "/var/www/html/wp-content/plugins/test-plugin": "${workspaceRoot}",
+                "/var/www/html/wp-content/plugins/dev-plugin": "${workspaceRoot}",
                 "/var/www/html/": "${workspaceRoot}/.wordpress/html",
             },
             "port": 9001
