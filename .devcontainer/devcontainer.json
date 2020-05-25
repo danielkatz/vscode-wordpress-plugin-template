@@ -1,36 +1,37 @@
 {
-	"name": "Dev Container Definition Template - Docker Compose",
+	"name": "WordPress Plugin template for VS Code",
 
-	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	"dockerComposeFile": "docker-compose.yml",
-
-	// The 'service' property is the name of the service for the container that VS Code should
-	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
 	"service": "wordpress",
-
-	// The optional 'workspaceFolder' property is the path VS Code should open by default when
-	// connected. This is typically a volume mount in .devcontainer/docker-compose.yml
 	"workspaceFolder": "/workspace",
 
-	// Set *default* container specific settings.json values on container create.
 	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"files.eol": "\n",
+		"files.insertFinalNewline": true,
+		"phpsab.executablePathCS": "/root/.composer/vendor/bin/phpcs",
+		"phpsab.executablePathCBF": "/root/.composer/vendor/bin/phpcbf",
+		"phpsab.snifferMode": "onType",
+		"phpsab.standard": "WordPress",
+		"sqltools.connections": [
+			{
+				"name": "Docker-Compose MariaDB",
+				"database": "db_name",
+				"dialect": "MariaDB",
+				"port": 3306,
+				"server": "mysql",
+				"username": "user_name",
+				"password": "user_pass"
+			}
+		]
 	},
 
-	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"felixfbecker.php-pack",
 		"valeryanm.vscode-phpsab",
 		"mtxr.sqltools",
 	],
 
-	// Uncomment the next line if you want start specific services in your Docker Compose config.
-	// "runServices": [],
-
-	// Uncomment this like if you want to keep your containers running after VS Code shuts down.
-	// "shutdownAction": "none",
-
-	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "./.devcontainer/setup.sh",
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
