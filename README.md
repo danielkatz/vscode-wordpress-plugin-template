@@ -10,6 +10,7 @@ Included software:
 
 |Software|Version|
 |--------|-------|
+|nodejs|14.x|
 |PHP-FPM|7.4.x|
 |WordPress|5.4.x|
 |Composer|[latest](https://getcomposer.org/)|
@@ -33,7 +34,7 @@ This template uses [Visual Studio Code Remote - Containers](https://code.visuals
 
 After installing the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extention, when you are opening the project for the first time, a fresh copy of WordPress will be installed info `.wordrpess` folder inside your project. This folder will contain two sub-folders:
 * `html` for WordPress files.
-* `mysql` for MariaDB files.
+* `db` for MariaDB files.
 
 You will find your own code mapped via a symlink to `html/wp-content/plugins/dev-plugin` inside `.wordpress`;
 
